@@ -1,0 +1,36 @@
+<div id="app">
+  <ol>
+    <!--
+        이제 각 todo-item 에 todo 객체를 제공합니다.
+        화면에 나오므로, 각 항목의 컨텐츠는 동적으로 바뀔 수 있습니다.
+        또한 각 구성 요소에 "키"를 제공해야합니다 (나중에 설명 됨).
+       -->
+    <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.iddkdkdk">
+    </todo-item>
+  </ol>
+</div>
+<script type="text/javascript">
+  Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{ todo.text }}</li>'
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      groceryList: [{
+          iddkdkdk: 0,
+          text: 'Vegetables'
+        },
+        {
+          iddkdkdk: 1,
+          text: 'Cheese'
+        },
+        {
+          iddkdkdk: 2,
+          text: 'Whatever else humans are supposed to eat'
+        }
+      ]
+    }
+  });
+</script>

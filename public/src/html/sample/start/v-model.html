@@ -1,0 +1,26 @@
+<div id="app">
+  <p>{{ blog.title }}</p>
+  <p>{{ blog.content }}</p>
+  <p>{{ blog.tags }}</p>
+  <input v-model="blog.title">
+  <input v-model="blog.content">
+  <input v-model="blog.tags">
+</div>
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    data: {
+      blog: {
+        title: '',
+        content: '',
+        tags: ''
+      },
+      message: '안녕하세요 Vue!'
+    },
+    methods: {
+      showinfo: function() {
+        console.log(this.blog.title);
+      }
+    }
+  });
+</script>

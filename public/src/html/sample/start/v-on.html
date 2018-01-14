@@ -1,0 +1,21 @@
+<div id="app">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">메시지 뒤집기</button>
+</div>
+<script type="text/javascript">
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: '안녕하세요! Vue.js!'
+    },
+    methods: {
+      reverseMessage: function() {
+        this.func1();
+        this.message = this.message.split('').reverse().join('')
+      },
+      func1: function() {
+        console.log("called func1");
+      }
+    }
+  });
+</script>
