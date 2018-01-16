@@ -9,7 +9,47 @@
 </head>
 
 <body>
+
+
+  <div id="demoforWatch">
+  {{ fullName }}
+</div>
+<div id="demoforComputed">
+  {{ fullName }}
+</div>
+<script>
+  var vm = new Vue({
+    el: '#demoforWatch',
+    data: {
+      firstName: 'Foo',
+      lastName: 'Bar',
+      fullName: 'Foo Bar'
+    },
+    watch: {
+      firstName: function(val, old) {
+        this.fullName = val + ' ' + this.lastName + ", old : " + old;
+      },
+      lastName: function(val) {
+        this.fullName = this.firstName + ' ' + val
+      }
+    }
+  });
+  var vm2 = new Vue({
+    el: '#demoforComputed',
+    data: {
+      firstName: 'Foo',
+      lastName: 'Bar'
+    },
+    computed: {
+      fullName: function() {
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  })
+</script>
+
   <!--
+  @include('sample/observe/computed.html')
   @include('sample/start/first.html')
   @include('sample/start/v-bind.html')
   @include('sample/start/v-if.html')
@@ -17,8 +57,13 @@
   @include('sample/start/v-on.html')
   @include('sample/start/v-model.html')
   @include('sample/start/component.html')
+  @include('sample/syntax/v-once.html')
+  @include('sample/syntax/v-html.html')
+  @include('sample/syntax/expres.html')
+  @include('sample/syntax/param.html')
+  @include('sample/syntax/prevent.html')
+  @include('sample/syntax/shortname.html')
   -->
-
 </body>
 
 </html>

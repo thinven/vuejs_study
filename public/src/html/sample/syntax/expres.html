@@ -1,0 +1,16 @@
+<div id="app">
+  {{ number + 1 }} {{ ok ? 'YES' : 'NO' }} {{ message.split('').reverse().join('') }}
+
+  <div v-bind:id="'list-' + id"></div>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      number: 10,
+      ok: true,
+      message: '안녕하세요 ~~',
+      id: 'key'
+    }
+  })
+</script>

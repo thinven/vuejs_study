@@ -1,0 +1,36 @@
+<div id="demoforWatch">
+  {{ fullName }}
+</div>
+<div id="demoforComputed">
+  {{ fullName }}
+</div>
+<script>
+  var vm = new Vue({
+    el: '#demoforWatch',
+    data: {
+      firstName: 'Foo',
+      lastName: 'Bar',
+      fullName: 'Foo Bar'
+    },
+    watch: {
+      firstName: function(val, old) {
+        this.fullName = val + ' ' + this.lastName + ", old : " + old;
+      },
+      lastName: function(val) {
+        this.fullName = this.firstName + ' ' + val
+      }
+    }
+  });
+  var vm2 = new Vue({
+    el: '#demoforComputed',
+    data: {
+      firstName: 'Foo',
+      lastName: 'Bar'
+    },
+    computed: {
+      fullName: function() {
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  })
+</script>

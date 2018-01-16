@@ -1,0 +1,26 @@
+<div id="app">
+  <!-- 전체 문법 -->
+  <a v-bind:href="url"> ... </a>
+
+  <!-- 약어 -->
+  <a :href="url"> ... </a>
+
+  <!-- 전체 문법 -->
+  <a v-on:click="doSomething"> ... </a>
+
+  <!-- 약어 -->
+  <a @click="doSomething"> ... </a>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      url: 'http://www.naver.com'
+    },
+    methods: {
+      doSomething: function() {
+        console.log("doSomething called!!");
+      }
+    }
+  });
+</script>

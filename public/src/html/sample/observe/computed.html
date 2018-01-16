@@ -1,0 +1,47 @@
+<div id="example">
+  <p>원본 메시지: "{{ message }}"</p>
+  <p>뒤집히도록 계산된 메시지: "{{ reversedMessage }}"</p>
+
+  <p>원본 메시지: "{{ pagenumber }}"</p>
+  <p>뒤집히도록 계산된 메시지: "{{ displaypn }}"</p>
+
+  <p>원본 메시지: "{{ now }}"</p>
+
+  <button @click="changepn">change pn</button>
+  <button @click="changedeco">change deco</button>
+  <button @click="shownow">shownow</button>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#example',
+    data: {
+      message: 'hello vuejs!',
+      pagenumber: 7,
+    },
+    computed: {
+      now: function() {
+        return Date.now();
+      },
+      reversedMessage: function() {
+        return this.message.split('').reverse().join('');
+      },
+      displaypn: function(deco) {
+        if (typeof deco == 'String') {
+          return this.pagenumber + deco;
+        }
+        return this.pagenumber + 'page';
+      }
+    },
+    methods: {
+      changepn: function() {
+        this.pagenumber = 12;
+      },
+      changedeco: function() {
+        console.log(this.displaypn);
+      },
+      shownow: function() {
+        console.log(this.now);
+      }
+    }
+  });
+</script>

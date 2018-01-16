@@ -1,0 +1,18 @@
+<div id="app">
+  <form v-on:submit.prevent="onSubmit">
+    <button type="submit"><a href="http://www.naver.com">submit</a></button>
+  </form>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+
+    },
+    methods: {
+      onSubmit: function() {
+        console.log("onSubmit called!!");
+      }
+    }
+  });
+</script>

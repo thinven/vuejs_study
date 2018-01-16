@@ -1,0 +1,15 @@
+<div id="app">
+  <a v-bind:href="url"> ... </a>
+  <a v-on:click="doSomething"> ... </a>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      url: 'http://www.naver.com',
+      doSomething: function() {
+        console.log("doSomething called!!");
+      }
+    }
+  });
+</script>

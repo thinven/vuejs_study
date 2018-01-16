@@ -1,7 +1,10 @@
 <div id="app">
-  <span v-bind:title="message" v-bind:test="test" v-bind:depth="depth.chd.che">
-      내 위에 잠시 마우스를 올리면 동적으로 바인딩 된 title을 볼 수 있습니다!
-    </span>
+  <div v-bind:title="message" v-bind:test="test" v-bind:depth="depth.chd.che">
+    내 위에 잠시 마우스를 올리면 동적으로 바인딩 된 title을 볼 수 있습니다!
+  </div>
+
+  <button v-bind:disabled="isButtonDisabled">Button1</button>
+  <button v-if:seen=isButtonDisabled>Button2</button>
 </div>
 <script type="text/javascript">
   var app = new Vue({
@@ -13,7 +16,8 @@
         chd: {
           che: '나는 che입니다.'
         }
-      }
+      },
+      isButtonDisabled: 'ddd'
     }
   });
 </script>

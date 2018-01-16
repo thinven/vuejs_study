@@ -1,0 +1,20 @@
+<div id="app">
+  <div>메시지: {{ msg }}</div>
+  <div v-once>다시는 변경하지 않습니다: {{ msg }}</div>
+
+  <button v-on:click="msgupdate">msg 수정</button>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'hello vuejs!!'
+    },
+    methods: {
+      msgupdate: function() {
+        this.msg = '안녕하세요 vuejs!!';
+      }
+    }
+  });
+</script>
