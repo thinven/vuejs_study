@@ -1,0 +1,47 @@
+<div id="app">
+  <div v-bind:class="{ active: isActive }"></div>
+  <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+  <div v-bind:class="classObject"></div>
+  <div v-bind:class="classObject2"></div>
+  <div v-bind:class="[activeClass, errorClass]"></div>
+  <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+  <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+  <wrap-component :test="message" class="baz boo"></wrap-component>
+  <my-component :test="[message, name]" :class="{ active: isActive }"></my-component>
+  <my-component :test="{message, name}" :class="{ active: isActive }"></my-component>
+</div>
+<script>
+  Vue.component('my-component', {
+    props: ['test', 'name'],
+    template: '<p class="foo bar">{{test[0]}} {{test[1]}}, {{test.message + " " + test.name}}</p>'
+  });
+
+  Vue.component('wrap-component', {
+    props: ['test'],
+    template: '<div class="test"><my-component :test="test"></my-component></div>'
+  });
+
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello~~',
+      name: '홍길동',
+      isActive: true,
+      hasError: false,
+      classObject: {
+        active: true,
+        'text-danger': false
+      },
+      activeClass: 'active',
+      errorClass: 'text-danger'
+    },
+    computed: {
+      classObject2: function() {
+        return {
+          active: this.isActive && !this.error,
+          'text-danger': this.error && this.error.type === 'fatal'
+        }
+      }
+    }
+  });
+</script>

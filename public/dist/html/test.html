@@ -11,44 +11,37 @@
 <body>
 
 
-  <div id="demoforWatch">
-  {{ fullName }}
-</div>
-<div id="demoforComputed">
-  {{ fullName }}
+  <div id="app">
+  <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">Hi</div>
+  <div :style="styleObject">Hi</div>
+  <div v-bind:style="[baseStyles, overridingStyles]">Hi</div>
 </div>
 <script>
   var vm = new Vue({
-    el: '#demoforWatch',
+    el: '#app',
     data: {
-      firstName: 'Foo',
-      lastName: 'Bar',
-      fullName: 'Foo Bar'
-    },
-    watch: {
-      firstName: function(val, old) {
-        this.fullName = val + ' ' + this.lastName + ", old : " + old;
+      activeColor: 'red',
+      fontSize: 30,
+      styleObject: {
+        color: 'red',
+        fontSize: '13px'
       },
-      lastName: function(val) {
-        this.fullName = this.firstName + ' ' + val
+      baseStyles: {
+        color: 'blue',
+        fontSize: '16px'
+      },
+      overridingStyles: {
+        border: '1px solid #ff0000'
       }
     }
   });
-  var vm2 = new Vue({
-    el: '#demoforComputed',
-    data: {
-      firstName: 'Foo',
-      lastName: 'Bar'
-    },
-    computed: {
-      fullName: function() {
-        return this.firstName + ' ' + this.lastName
-      }
-    }
-  })
 </script>
 
   <!--
+  @include('sample/clsNstyle/class.html')
+  @include('sample/observe/watch.html')
+  @include('sample/observe/setter.html')
+  @include('sample/observe/comVSobs.html')
   @include('sample/observe/computed.html')
   @include('sample/start/first.html')
   @include('sample/start/v-bind.html')

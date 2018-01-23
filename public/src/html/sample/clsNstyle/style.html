@@ -1,0 +1,25 @@
+<div id="app">
+  <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">Hi</div>
+  <div :style="styleObject">Hi</div>
+  <div v-bind:style="[baseStyles, overridingStyles]">Hi</div>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      activeColor: 'red',
+      fontSize: 30,
+      styleObject: {
+        color: 'red',
+        fontSize: '13px'
+      },
+      baseStyles: {
+        color: 'blue',
+        fontSize: '16px'
+      },
+      overridingStyles: {
+        border: '1px solid #ff0000'
+      }
+    }
+  });
+</script>
