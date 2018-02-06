@@ -1,0 +1,18 @@
+<div id="app">
+  <div v-if="ok">
+    이제 나를 볼 수 있어요
+  </div>
+  <div v-else>
+    이제는 안보입니다
+  </div>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    computed: {
+      ok: function() {
+        return Math.random() > 0.5;
+      }
+    }
+  })
+</script>

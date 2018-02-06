@@ -1,0 +1,15 @@
+<div id="app">
+  <template v-if="ok">
+    <h1>Title</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </template>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      ok: true
+    }
+  });
+</script>

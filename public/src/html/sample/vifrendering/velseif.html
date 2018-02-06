@@ -1,0 +1,24 @@
+<div id="app">
+  <div v-if="type<0.25">
+    A
+  </div>
+  <div v-else-if="type<0.5">
+    B
+  </div>
+  <div v-else-if="type<0.75">
+    C
+  </div>
+  <div v-else>
+    Not A/B/C
+  </div>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    computed: {
+      type: function() {
+        return Math.random();
+      }
+    }
+  });
+</script>

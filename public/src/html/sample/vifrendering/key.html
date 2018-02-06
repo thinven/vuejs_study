@@ -1,0 +1,32 @@
+<div id="app">
+  <template v-if="loginType === 'username'">
+    <label>사용자 이름</label>
+    <input v-model="user.name" placeholder="사용자 이름을 입력하세요">
+  </template>
+  <template v-else>
+    <label>이메일</label>
+    <input v-model="user.email" placeholder="이메일 주소를 입력하세요">
+  </template>
+  <button v-on:click="changeType">toggle</button>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      user: {
+        name: '',
+        email: ''
+      },
+      loginType: 'username'
+    },
+    methods: {
+      changeType: function() {
+        if (this.loginType == 'username') {
+          this.loginType = 'email';
+        } else {
+          this.loginType = 'username';
+        }
+      }
+    }
+  });
+</script>

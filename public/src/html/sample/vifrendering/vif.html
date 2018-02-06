@@ -1,0 +1,12 @@
+<div id="app">
+  <h1 v-if="ok" class="yes">Yes</h1>
+  <h1 v-else class="no">No</h1>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      ok: true
+    }
+  })
+</script>

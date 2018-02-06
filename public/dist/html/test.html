@@ -10,34 +10,63 @@
 
 <body>
 
-
   <div id="app">
-  <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">Hi</div>
-  <div :style="styleObject">Hi</div>
-  <div v-bind:style="[baseStyles, overridingStyles]">Hi</div>
+  <ul>
+    <li>
+      <button type="button" @click="clickTab1">tabtitle1</button>
+    </li>
+    <li>
+      <button type="button" @click="clickTab2">tabtitle2</button>
+    </li>
+    <li>
+      <button type="button" @click="clickTab3">tabtitle3</button>
+    </li>
+  </ul>
+  <div v-show="tab1">
+    tab1
+  </div>
+  <div v-show="tab2">
+    tab2
+  </div>
+  <div v-show="tab3">
+    tab3
+  </div>
 </div>
 <script>
   var vm = new Vue({
     el: '#app',
     data: {
-      activeColor: 'red',
-      fontSize: 30,
-      styleObject: {
-        color: 'red',
-        fontSize: '13px'
+      tab1: true,
+      tab2: false,
+      tab3: false
+    },
+    methods: {
+      clickTab1: function() {
+        this.tab1 = true;
+        this.tab2 = false;
+        this.tab3 = false;
       },
-      baseStyles: {
-        color: 'blue',
-        fontSize: '16px'
+      clickTab2: function() {
+        this.tab1 = false;
+        this.tab2 = true;
+        this.tab3 = false;
       },
-      overridingStyles: {
-        border: '1px solid #ff0000'
+      clickTab3: function() {
+        this.tab1 = false;
+        this.tab2 = false;
+        this.tab3 = true;
       }
     }
   });
 </script>
 
   <!--
+  @include('sample/vifrendering/key.html')
+  @include('sample/vifrendering/velseif.html')
+  @include('sample/vifrendering/velse.html')
+  @include('sample/vifrendering/template.html')
+  @include('sample/vifrendering/vif.html')
+  @include('sample/clsNstyle/style.html')
   @include('sample/clsNstyle/class.html')
   @include('sample/observe/watch.html')
   @include('sample/observe/setter.html')
