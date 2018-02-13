@@ -10,57 +10,33 @@
 
 <body>
 
-  <div id="app">
-  <ul>
-    <li>
-      <button type="button" @click="clickTab1">tabtitle1</button>
-    </li>
-    <li>
-      <button type="button" @click="clickTab2">tabtitle2</button>
-    </li>
-    <li>
-      <button type="button" @click="clickTab3">tabtitle3</button>
-    </li>
-  </ul>
-  <div v-show="tab1">
-    tab1
-  </div>
-  <div v-show="tab2">
-    tab2
-  </div>
-  <div v-show="tab3">
-    tab3
-  </div>
-</div>
+  <ul id="app">
+  <template v-for="item in items">
+    <li>{{ item.msg }}</li>
+    <li class="divider"></li>
+  </template>
+</ul>
 <script>
   var vm = new Vue({
     el: '#app',
     data: {
-      tab1: true,
-      tab2: false,
-      tab3: false
-    },
-    methods: {
-      clickTab1: function() {
-        this.tab1 = true;
-        this.tab2 = false;
-        this.tab3 = false;
-      },
-      clickTab2: function() {
-        this.tab1 = false;
-        this.tab2 = true;
-        this.tab3 = false;
-      },
-      clickTab3: function() {
-        this.tab1 = false;
-        this.tab2 = false;
-        this.tab3 = true;
-      }
+      items: [{
+          msg: 'msg1'
+        },
+        {
+          msg: 'msg2'
+        }
+      ]
     }
   });
 </script>
 
   <!--
+  @include('sample/vforendering/range.html')
+  @include('sample/vforendering/filtering.html')
+  @include('sample/vforendering/vforkey.html')
+  @include('sample/vforendering/vfor.html')
+  @include('sample/vifrendering/vshow.html')
   @include('sample/vifrendering/key.html')
   @include('sample/vifrendering/velseif.html')
   @include('sample/vifrendering/velse.html')

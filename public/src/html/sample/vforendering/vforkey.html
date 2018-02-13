@@ -1,0 +1,48 @@
+<table id="app">
+  <tbody>
+    <tr>
+      <th>seq</th>
+      <th>제목</th>
+      <th>작성자</th>
+    </tr>
+    <tr v-for="(item,index) in bbslist">
+      <td>{{index+1}}</td>
+      <td>
+        <a href="#" @click="clickTitle(item, index)">{{item.title}}</a>
+      </td>
+      <td>{{item.writer}}</td>
+    </tr>
+  </tbody>
+</table>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      bbslist: [{
+          id: 0,
+          title: 'title1',
+          writer: 'writer1'
+        },
+        {
+          id: 1,
+          title: 'title2',
+          writer: 'writer2'
+        },
+        {
+          id: 2,
+          title: 'title3',
+          writer: 'writer3'
+        }
+      ]
+    },
+    methods: {
+      clickTitle: function(item, index) {
+        var info = this.bbslist[index];
+        console.log("index : " + info.title + " by " + info.writer);
+        // vs
+        console.log(item);
+        console.log("item : " + item.title + " by " + item.writer);
+      }
+    }
+  });
+</script>

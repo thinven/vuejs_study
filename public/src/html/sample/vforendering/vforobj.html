@@ -1,0 +1,29 @@
+<div id="v-for-object">
+  <ul>
+    <li v-for="value in object">
+      {{ value }}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="(value, key) in object">
+      {{key}} : {{ value }}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="(value, key, index) in object">
+      {{ index }}. {{key}} : {{ value }}
+    </li>
+  </ul>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#v-for-object',
+    data: {
+      object: {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30
+      }
+    }
+  })
+</script>
