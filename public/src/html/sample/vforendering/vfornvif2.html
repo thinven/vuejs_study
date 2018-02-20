@@ -1,0 +1,18 @@
+<div id="app">
+  <ul v-if="todos.length">
+    <li v-for="todo in todos">
+      {{ todo }}
+    </li>
+  </ul>
+  <p v-else>No todos left!</p>
+</div>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      todos: [
+        '첫 타이틀', '두번째 타이틀', '세번째 타이틀'
+      ]
+    }
+  })
+</script>

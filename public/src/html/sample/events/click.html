@@ -1,0 +1,24 @@
+<div id="example-1">
+  <button @click="counter2">Add 1</button>
+  <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
+</div>
+<script>
+  var example1 = new Vue({
+    el: '#example-1',
+    data: {
+      counter: 0,
+      msg: '안녕하세요'
+    },
+    methods: {
+      counter2: function() {
+        this.counter += 1
+        this.showconsole();
+      },
+      showconsole: function() {
+        console.clear();
+        for (var i = 0; i < this.counter; i++)
+          console.log(this.msg + i);
+      }
+    }
+  })
+</script>

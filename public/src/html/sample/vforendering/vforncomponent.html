@@ -1,0 +1,24 @@
+<ul id="app">
+  <my-component v-for="(item, index) in items" :item="item" :index="index" :key="item.id"></my-component>
+</ul>
+<script>
+  Vue.component("my-component", {
+    props: ['item', 'index'],
+    template: "<li>{{index}}. {{item.title}}</li>"
+  });
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      items: [{
+        id: 1,
+        title: '첫 타이틀'
+      }, {
+        id: 2,
+        title: '두번째 타이틀'
+      }, {
+        id: 3,
+        title: '세번째 타이틀'
+      }]
+    }
+  })
+</script>

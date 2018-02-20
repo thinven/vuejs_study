@@ -1,0 +1,23 @@
+<div id="app">
+  <li v-if="!todo.isComplete" v-for="todo in todos">
+    {{ todo.title }}
+  </li>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      todos: [{
+        isComplete: false,
+        title: '첫 타이틀'
+      }, {
+        isComplete: true,
+        title: '두번째 타이틀'
+      }, {
+        isComplete: false,
+        title: '세번째 타이틀'
+      }]
+    }
+  })
+</script>

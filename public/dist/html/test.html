@@ -10,28 +10,32 @@
 
 <body>
 
-  <ul id="app">
-  <template v-for="item in items">
-    <li>{{ item.msg }}</li>
-    <li class="divider"></li>
-  </template>
-</ul>
+  <div id="app">
+  <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+    Submit
+  </button>
+</div>
 <script>
-  var vm = new Vue({
+  new Vue({
     el: '#app',
-    data: {
-      items: [{
-          msg: 'msg1'
-        },
-        {
-          msg: 'msg2'
-        }
-      ]
+    methods: {
+      warn: function(message, event) {
+        if (event) event.preventDefault();
+        alert(message);
+      }
     }
-  });
+  })
 </script>
 
   <!--
+  @include('sample/events/inlinemethod.html')
+  @include('sample/events/eventmethod.html')
+  @include('sample/events/click.html')
+  @include('sample/vforendering/todos.html')
+  @include('sample/vforendering/vforncomponent.html')
+  @include('sample/vforendering/vfornvif2.html')
+  @include('sample/vforendering/vfornvif.html')
+  @include('sample/vforendering/template.html')
   @include('sample/vforendering/range.html')
   @include('sample/vforendering/filtering.html')
   @include('sample/vforendering/vforkey.html')
