@@ -1,0 +1,17 @@
+<div id="app">
+  <select v-model="selected">
+    <option disabled="disabled" value="">Please select one</option>
+    <option value="a">A</option>
+    <option value="b">B</option>
+    <option value="c">C</option>
+  </select>
+  <span>선택함: {{ selected }}</span>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      selected: ''
+    }
+  })
+</script>

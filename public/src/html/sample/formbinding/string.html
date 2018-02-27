@@ -1,0 +1,26 @@
+<div id="app">
+  <form name="frm" method="post">
+    <input v-model="message" placeholder="여기를 수정해보세요">
+    <p>메시지: {{ message }}</p>
+    <span>여러 줄을 가지는 메시지:</span>
+    <p style="white-space: pre-line">{{ multiMessage }}</p>
+    <br>
+    <textarea v-model="multiMessage" placeholder="여러줄을 입력해보세요"></textarea>
+  </form>
+  <button type="button" @click="submit">전송</button>
+</div>
+<script>
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      message: "hello ~",
+      multiMessage: 'test \n test'
+    },
+    methods: {
+      submit: function() {
+        document.frm.action = "url....";
+        document.frm.submit();
+      }
+    }
+  });
+</script>

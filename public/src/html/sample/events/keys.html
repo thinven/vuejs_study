@@ -1,0 +1,49 @@
+<div id="app">
+  <!-- Alt + C -->
+  <input @keyup.alt.67="clear">
+  <!-- Ctrl + Click -->
+  <div @click.shift.meta="doSomething">Do something</div>
+  <!-- Alt 또는 Shift와 함께 눌린 경우에도 실행됩니다. -->
+  <button @click.ctrl="onClick">A</button>
+
+  <!-- Ctrl 키만 눌려있을 때만 실행됩니다. -->
+  <button @click.ctrl.exact="onCtrlClick">A</button>
+
+  <!-- 아래 코드는 시스템 키가 눌리지 않은 상태인 경우에만 작동합니다. -->
+  <button @click.exact="onClickOnly">A</button>
+
+  <button @click.left="onClickLeft">Left</button>
+  <button @click.right="onClickRight">Right</button>
+  <button @click.middle="onClickMiddel">Middle</button>
+</div>
+<script>
+  var vm = new Vue({
+    el: "#app",
+    methods: {
+      clear: function() {
+        console.log("c 버튼이 눌렸어요.");
+      },
+      doSomething: function() {
+        console.log("ctrl 클릭이 발생했어요.");
+      },
+      onClick: function() {
+        console.log("ctrl과 다른 시스템키가 함께해도 발동해요.");
+      },
+      onCtrlClick: function() {
+        console.log("ctrl만 함께 눌렸어요.");
+      },
+      onClickOnly: function() {
+        console.log("시스템 키가 눌리지 않았어요.");
+      },
+      onClickLeft: function() {
+        console.log("마우스 왼쪽 버튼이 클릭됐어요.");
+      },
+      onClickRight: function() {
+        console.log("마우스 오른쪽 버튼이 클릭됐어요.");
+      },
+      onClickMiddle: function() {
+        console.log("마우스 휠 버튼이 클릭됐어요.");
+      }
+    }
+  })
+</script>
