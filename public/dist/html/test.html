@@ -11,34 +11,54 @@
 <body>
 
   <div id="app">
-  <input type="radio" id="one" value="One" v-model="picked">
-  <label for="one">One</label>
-  <br>
-  <input type="radio" id="two" value="Two" v-model="picked">
-  <label for="two">Two</label>
-  <br>
-  <span>선택: {{ picked }}</span>
-
-  <input type="radio" v-model="pick" v-bind:value="a">
-  <button type="button" @click="check">check</button>
+  <div>
+    {{ point.total }}
+  </div>
+  <child :obj="testobj" :member="user" :point="point"></child>
 </div>
 <script>
-  var vm = new Vue({
+  Vue.component('child', {
+    // props 정의
+    props: {
+      obj: {
+        type: Object
+      },
+      member: {
+        type: Object
+      },
+      point: {
+        type: Object
+      }
+    },
+    // 데이터와 마찬가지로 prop은 템플릿 내부에서 사용할 수 있으며
+    // vm의 this.message로 사용할 수 있습니다.
+    template: '<div><button @click="change">변경</button><span>{{ member.id }} / {{ member.pw }} ({{ point.used }} / {{ point.total }})</span></div>',
+    methods: {
+      change: function() {
+        this.point.total = 1000;
+      }
+    }
+  });
+  new Vue({
     el: '#app',
     data: {
-      picked: "",
-      pick: "",
-      a: "a"
-    },
-    methods: {
-      check: function() {
-        console.log(this.pick === this.a);
+      testobj: 'test',
+      user: {
+        id: 'testid',
+        pw: 'testpw'
+      },
+      point: {
+        total: 100,
+        used: 34,
+        remain: 66
       }
     }
   });
 </script>
 
   <!--
+  @include('sample/components/dataisfunction.html')
+  @include('sample/formbinding/radio.html')
   @include('sample/formbinding/vfor.html')
   @include('sample/formbinding/multiselect.html')
   @include('sample/formbinding/select.html')

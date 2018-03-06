@@ -1,0 +1,45 @@
+<div id="app">
+  <div>
+    {{ point.total }}
+  </div>
+  <child :obj="testobj" :member="user" :point="point"></child>
+</div>
+<script>
+  Vue.component('child', {
+    // props 정의
+    props: {
+      obj: {
+        type: Object
+      },
+      member: {
+        type: Object
+      },
+      point: {
+        type: Object
+      }
+    },
+    // 데이터와 마찬가지로 prop은 템플릿 내부에서 사용할 수 있으며
+    // vm의 this.message로 사용할 수 있습니다.
+    template: '<div><button @click="change">변경</button><span>{{ member.id }} / {{ member.pw }} ({{ point.used }} / {{ point.total }})</span></div>',
+    methods: {
+      change: function() {
+        this.point.total = 1000;
+      }
+    }
+  });
+  new Vue({
+    el: '#app',
+    data: {
+      testobj: 'test',
+      user: {
+        id: 'testid',
+        pw: 'testpw'
+      },
+      point: {
+        total: 100,
+        used: 34,
+        remain: 66
+      }
+    }
+  });
+</script>
