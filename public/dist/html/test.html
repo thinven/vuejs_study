@@ -10,53 +10,55 @@
 
 <body>
 
-  <div id="app">
-  <div>
-    {{ point.total }}
-  </div>
-  <child :obj="testobj" :member="user" :point="point"></child>
+  <div id="counter-event-example">
+  <p>{{ total }}</p>
+  <p>{{ mtotal }}</p>
+  <button-counter v-on:increment="incrementTotal" v-on:decrement="decrementTotal"></button-counter>
+  <button-counter v-on:increment="incrementTotal" v-on:decrement="decrementTotal"></button-counter>
+  <input type="text" v-model.number="num" @keyup="changeVal" />
 </div>
 <script>
-  Vue.component('child', {
-    // props 정의
-    props: {
-      obj: {
-        type: Object
-      },
-      member: {
-        type: Object
-      },
-      point: {
-        type: Object
+  Vue.component('button-counter', {
+    template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+    data: function() {
+      return {
+        counter: 0,
+        test: 'test'
       }
     },
-    // 데이터와 마찬가지로 prop은 템플릿 내부에서 사용할 수 있으며
-    // vm의 this.message로 사용할 수 있습니다.
-    template: '<div><button @click="change">변경</button><span>{{ member.id }} / {{ member.pw }} ({{ point.used }} / {{ point.total }})</span></div>',
     methods: {
-      change: function() {
-        this.point.total = 1000;
+      incrementCounter: function() {
+        this.counter += 1
+        this.$emit('increment')
+        this.$emit('decrement')
       }
-    }
-  });
+    },
+  })
+
   new Vue({
-    el: '#app',
+    el: '#counter-event-example',
     data: {
-      testobj: 'test',
-      user: {
-        id: 'testid',
-        pw: 'testpw'
+      total: 0,
+      mtotal: 0,
+      num: 1
+    },
+    methods: {
+      incrementTotal: function() {
+        this.total += this.num;
       },
-      point: {
-        total: 100,
-        used: 34,
-        remain: 66
+      decrementTotal: function() {
+        this.mtotal -= this.num;
+      },
+      changeVal: function() {
+
       }
     }
-  });
+  })
 </script>
 
   <!--
+  @include('sample/components/propschangenmerge.html')
+  @include('sample/components/propstransfer.html')
   @include('sample/components/dataisfunction.html')
   @include('sample/formbinding/radio.html')
   @include('sample/formbinding/vfor.html')
